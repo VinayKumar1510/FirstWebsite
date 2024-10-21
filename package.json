@@ -21,3 +21,15 @@
     "tailwindcss": "^3.4.1"
   }
 }
+
+"scripts": {
+    "dev:client": "nextjs src/client",
+    "dev:server": "node src/server --out-dir dist/server --source-maps --watch",
+    "dev": "dotenv -e .env.development yarn dev:client & yarn dev:server",
+    "build": "yarn build:client && yarn build:server",
+    "build:client": "dotenv -e .env.production next build src/client",
+    "build:server": "node src/server --out-dir dist/server --source-maps",
+    "build:staging": "yarn build:staging:client && yarn build:server",
+    "build:staging:client": "dotenv -e .env.staging next build src/client",
+    "start": "next start",
+  },
